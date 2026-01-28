@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nupem-fmvz.vercel.app/sitemap.xml
