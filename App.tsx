@@ -11,6 +11,7 @@ import { About } from './components/About';
 import { Testimonials } from './components/Testimonials'; // Import Testimonials
 import { FAQ } from './components/FAQ'; // Import FAQ
 import { Analytics, trackEvent } from './components/Analytics';
+import { WhatsAppButton } from './components/WhatsAppButton';
 import { PRODUCTS, INSTAGRAM_POSTS } from './constants';
 import { Category, Product, CartItem } from './types';
 import { CheckCircle, ChevronRight } from 'lucide-react';
@@ -250,8 +251,11 @@ const App: React.FC = () => {
         />
       )}
 
+      {/* WhatsApp Floating Button */}
+      <WhatsAppButton />
+
       {/* Toast Notification */}
-      <div 
+      <div
         className={`fixed bottom-10 left-1/2 transform -translate-x-1/2 z-[60] bg-agro-primary text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-4 transition-all duration-500 ease-in-out border border-white/10 ${
           notification ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-90 pointer-events-none'
         }`}
