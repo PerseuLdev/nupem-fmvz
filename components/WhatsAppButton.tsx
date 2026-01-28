@@ -5,15 +5,11 @@ const WHATSAPP_MESSAGE = 'Olá! Vim pelo site da NUPEM e gostaria de mais inform
 
 export const WhatsAppButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isPulsing, setIsPulsing] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 2000);
-    const pulseTimer = setTimeout(() => setIsPulsing(false), 10000);
 
     return () => {
       clearTimeout(timer);
-      clearTimeout(pulseTimer);
     };
   }, []);
 
@@ -30,12 +26,8 @@ export const WhatsAppButton: React.FC = () => {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
       }`}
     >
-      {/* Pulse animation */}
-      {isPulsing && (
-        <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75" />
-      )}
-
       {/* WhatsApp Icon */}
+
       <svg
         viewBox="0 0 24 24"
         fill="white"

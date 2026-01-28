@@ -3,25 +3,17 @@ import { ChevronDown } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
-      setMousePos({ x, y });
-    };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
@@ -73,11 +65,7 @@ export const Hero: React.FC = () => {
 
           {/* 3D Interactive Title - Playfair Display */}
           <h1
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[0.95] transition-all duration-100 ease-out cursor-default"
-            style={{
-              transform: `perspective(1000px) rotateX(${mousePos.y * -5}deg) rotateY(${mousePos.x * 5}deg)`,
-              textShadow: `${mousePos.x * -15}px ${mousePos.y * -15}px 40px rgba(0,0,0,0.4)`
-            }}
+            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[0.95] cursor-default"
           >
             A Identidade do Agro
             <br />
