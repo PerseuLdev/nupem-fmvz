@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-// TODO: Configurar número de telefone correto
-const WHATSAPP_NUMBER = '5566999999999';
+const WHATSAPP_NUMBER = '5514996377757';
 const WHATSAPP_MESSAGE = 'Olá! Vim pelo site da NUPEM e gostaria de mais informações.';
 
 export const WhatsAppButton: React.FC = () => {

@@ -48,7 +48,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({
       `▪ ${item.quantity}x ${item.name}\n   _(${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.price)})_`
     ).join('\n\n');
     
-    const footer = `\n\n--------------------------------\n*TOTAL: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}*\n--------------------------------\n\nAguardo instruções de pagamento.`;
+    const footer = `\n\n--------------------------------\n*TOTAL: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}*\n--------------------------------\n\n*DADOS PARA ENTREGA:*\nNome: \nEndereço: \nCidade/UF: \nCEP: \nTelefone: \n\n_Preencha seus dados acima e aguarde as instruções de pagamento._`;
     
     const fullMessage = `${header}${body}${footer}`;
     

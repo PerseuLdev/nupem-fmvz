@@ -16,11 +16,26 @@ import { PRODUCTS, INSTAGRAM_POSTS } from './constants';
 import { Category, Product, CartItem } from './types';
 import { CheckCircle, ChevronRight } from 'lucide-react';
 
+const CART_STORAGE_KEY = 'nupem-cart';
+
 const App: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  // Carregar carrinho do localStorage
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    try {
+      const saved = localStorage.getItem(CART_STORAGE_KEY);
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [notification, setNotification] = useState<string | null>(null);
+
+  // Salvar carrinho no localStorage quando mudar
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+  }, [cartItems]);
 
   // Keyboard Shortcuts Effect
   useEffect(() => {
