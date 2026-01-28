@@ -126,7 +126,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onC
   };
 
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto transition-all duration-400 ${isVisible ? 'visible' : 'invisible'}`}>
+    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto overflow-x-hidden transition-all duration-400 ${isVisible ? 'visible' : 'invisible'}`}>
 
       {/* Backdrop with grain texture */}
       <div
