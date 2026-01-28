@@ -126,7 +126,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onC
   };
 
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-400 ${isVisible ? 'visible' : 'invisible'}`}>
+    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto transition-all duration-400 ${isVisible ? 'visible' : 'invisible'}`}>
 
       {/* Backdrop with grain texture */}
       <div
@@ -164,10 +164,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onC
 
       {/* Main Content Card */}
       <div
-        className={`relative z-10 w-full max-w-5xl transition-all duration-500 ${isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8'}`}
+        className={`relative z-10 w-full max-w-5xl my-auto transition-all duration-500 ${isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8'}`}
         style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
       >
-        <div className="bg-[#faf9f6] rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+        <div className="bg-[#faf9f6] rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row h-full">
 
           {/* Left: Image Section */}
           <div className="relative lg:w-1/2 bg-gradient-to-br from-[#f5f0eb] to-[#ebe4dc] p-8 lg:p-12 flex items-center justify-center min-h-[350px] lg:min-h-[550px]">
