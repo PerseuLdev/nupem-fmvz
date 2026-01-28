@@ -176,6 +176,7 @@ const App: React.FC = () => {
 
                     {/* Content */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                      <span className="w-6 h-0.5 bg-gradient-to-r from-agro-gold to-agro-soil rounded-full mb-2 group-hover:w-10 transition-all duration-300"></span>
                       <span className="text-white font-bold text-lg md:text-xl tracking-wider uppercase drop-shadow-lg text-center">
                         {category}
                       </span>
@@ -202,7 +203,10 @@ const App: React.FC = () => {
                   className={`mb-32 last:mb-0 scroll-mt-32`}
                 >
                   <div className="mb-10 border-b-2 border-gray-200 pb-4 flex items-baseline justify-between">
-                    <h3 className="text-3xl font-bold text-gray-800 tracking-tight">{category}</h3>
+                    <h3 className="text-3xl font-bold text-gray-800 tracking-tight flex items-center gap-4">
+                      <span className="w-8 h-1 bg-gradient-to-r from-agro-gold to-agro-soil rounded-full"></span>
+                      {category}
+                    </h3>
                     <span className="text-sm font-semibold text-gray-400">{categoryProducts.length} produtos</span>
                   </div>
                   
