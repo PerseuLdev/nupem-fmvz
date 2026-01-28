@@ -177,7 +177,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onC
             <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-[#4a3728]/20 rounded-br-lg" />
 
             {/* Category & New Badge */}
-            <div className="absolute top-6 left-6 flex items-center gap-2">
+            <div className="absolute top-6 left-6 flex items-center gap-2 z-20">
               <span className="bg-[#4a3728] text-white px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                 <span>{getCategoryIcon()}</span>
                 {product.category}
