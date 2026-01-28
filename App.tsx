@@ -137,13 +137,15 @@ const App: React.FC = () => {
             
             {/* Section Header */}
             <div className="text-center mb-16">
-              <span className="text-agro-primary font-extrabold tracking-[0.2em] uppercase text-xs mb-4 block opacity-80">
+              <span className="font-ranch-accent text-agro-primary text-sm mb-4 block opacity-80">
                 Catálogo Oficial
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-ranch-heading text-gray-900 mb-8 tracking-tight">
                 Escolha sua Categoria
               </h2>
-              <div className="w-24 h-1.5 bg-agro-gold mx-auto rounded-full"></div>
+              <div className="ornament-divider">
+                <div className="ornament-dot"></div>
+              </div>
             </div>
 
             {/* Quick Navigation Mini-Cards */}
@@ -157,7 +159,7 @@ const App: React.FC = () => {
                   <button
                     key={category}
                     onClick={() => scrollToCategory(`category-${category}`)}
-                    className="group relative h-32 md:h-48 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                    className="group relative h-32 md:h-48 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 rustic-frame leather-texture"
                   >
                     {/* Background Image */}
                     <div className="absolute inset-0">
@@ -177,7 +179,7 @@ const App: React.FC = () => {
                     {/* Content */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
                       <span className="w-6 h-0.5 bg-gradient-to-r from-agro-gold to-agro-soil rounded-full mb-2 group-hover:w-10 transition-all duration-300"></span>
-                      <span className="text-white font-bold text-lg md:text-xl tracking-wider uppercase drop-shadow-lg text-center">
+                      <span className="text-white font-ranch-accent text-lg md:text-xl tracking-wider drop-shadow-lg text-center">
                         {category}
                       </span>
                       <div className="mt-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 flex items-center text-agro-gold text-xs font-bold uppercase tracking-widest gap-1">
@@ -202,12 +204,11 @@ const App: React.FC = () => {
                   id={`category-${category}`} 
                   className={`mb-32 last:mb-0 scroll-mt-32`}
                 >
-                  <div className="mb-10 border-b-2 border-gray-200 pb-4 flex items-baseline justify-between">
-                    <h3 className="text-3xl font-bold text-gray-800 tracking-tight flex items-center gap-4">
-                      <span className="w-8 h-1 bg-gradient-to-r from-agro-gold to-agro-soil rounded-full"></span>
+                  <div className="mb-12 flex items-center justify-between category-title-ornament">
+                    <h3 className="text-3xl font-ranch-display text-gray-800 tracking-tight">
                       {category}
                     </h3>
-                    <span className="text-sm font-semibold text-gray-400">{categoryProducts.length} produtos</span>
+                    <span className="text-sm font-ranch-accent text-agro-soil">{categoryProducts.length} itens</span>
                   </div>
                   
                   {isCarouselLayout ? (

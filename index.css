@@ -1,1 +1,657 @@
-/* Custom styles */
+/* ═══════════════════════════════════════════════════════════════════════════
+   NUPEM AGRO STORE - Fazenda Premium Design System
+   Estética: Ranch/Fazenda Bold - Tradição, Autenticidade, Qualidade Artesanal
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Logo Badge Styles (Navbar)
+   ───────────────────────────────────────────────────────────────────────────── */
+.logo-badge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(145deg, #4a3728 0%, #3a2a1f 100%);
+  border-radius: 50%;
+  border: 3px solid #e9c46a;
+  box-shadow:
+    0 0 0 4px #4a3728,
+    0 0 0 6px #e9c46a,
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.logo-badge:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 0 4px #4a3728,
+    0 0 0 6px #e9c46a,
+    0 0 20px rgba(233, 196, 106, 0.4),
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.logo-badge.scrolled {
+  width: 60px;
+  height: 60px;
+  box-shadow:
+    0 0 0 3px #4a3728,
+    0 0 0 5px #e9c46a,
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.logo-badge.scrolled:hover {
+  box-shadow:
+    0 0 0 3px #4a3728,
+    0 0 0 5px #e9c46a,
+    0 0 15px rgba(233, 196, 106, 0.3),
+    0 6px 24px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.logo-badge.mobile {
+  width: 50px;
+  height: 50px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Nav Link Styles
+   ───────────────────────────────────────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e9c46a, transparent);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover {
+  color: #e9c46a;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Decorative Lines (Navbar)
+   ───────────────────────────────────────────────────────────────────────────── */
+.decorative-line {
+  position: relative;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e9c46a, transparent);
+  transition: all 0.4s ease;
+}
+
+.decorative-line::before,
+.decorative-line::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #e9c46a;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.decorative-line.left::before {
+  right: 0;
+}
+
+.decorative-line.left::after {
+  display: none;
+}
+
+.decorative-line.right::after {
+  left: 0;
+}
+
+.decorative-line.right::before {
+  display: none;
+}
+
+.logo-container:hover .decorative-line {
+  width: 80px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Navbar Layout
+   ───────────────────────────────────────────────────────────────────────────── */
+.navbar-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-left {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Dropdown Animation
+   ───────────────────────────────────────────────────────────────────────────── */
+.dropdown-menu {
+  transform-origin: top center;
+  animation: dropdownFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Mobile Menu Animation
+   ───────────────────────────────────────────────────────────────────────────── */
+.mobile-menu-enter {
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FAZENDA PREMIUM - Decorative Elements
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Stamp/Seal Badge - Estilo Carimbo de Fazenda
+   ───────────────────────────────────────────────────────────────────────────── */
+.stamp-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e9c46a;
+  background: transparent;
+  border: 2px dashed #e9c46a;
+  border-radius: 4px;
+  transform: rotate(-2deg);
+  transition: all 0.3s ease;
+}
+
+.stamp-badge::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid #e9c46a;
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+.stamp-badge:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 0 20px rgba(233, 196, 106, 0.3);
+}
+
+/* Variante sólida do stamp */
+.stamp-badge-solid {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.75rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #4a3728;
+  background: #e9c46a;
+  border: none;
+  border-radius: 2px;
+  transform: rotate(-1deg);
+  box-shadow:
+    4px 4px 0 #4a3728,
+    inset 0 0 0 2px rgba(74, 55, 40, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stamp-badge-solid:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow:
+    6px 6px 0 #4a3728,
+    inset 0 0 0 2px rgba(74, 55, 40, 0.2);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Ornamental Section Divider - Linha com Terminações
+   ───────────────────────────────────────────────────────────────────────────── */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e9c46a);
+}
+
+.ornament-divider::after {
+  background: linear-gradient(90deg, #e9c46a, transparent);
+}
+
+.ornament-divider .ornament-dot {
+  width: 8px;
+  height: 8px;
+  background: #e9c46a;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(233, 196, 106, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Category Title Ornament - ●────── TÍTULO ──────●
+   ───────────────────────────────────────────────────────────────────────────── */
+.category-title-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.category-title-ornament::before,
+.category-title-ornament::after {
+  content: '';
+  position: relative;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #e9c46a, #d4a373);
+  border-radius: 2px;
+}
+
+.category-title-ornament::before::after,
+.category-title-ornament::after::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #e9c46a;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Rustic Frame - Moldura Estilo Fazenda
+   ───────────────────────────────────────────────────────────────────────────── */
+.rustic-frame {
+  position: relative;
+  border: 3px solid #e9c46a;
+  border-radius: 1rem;
+  box-shadow:
+    0 0 0 6px #4a3728,
+    0 0 0 8px rgba(233, 196, 106, 0.3),
+    0 20px 60px -15px rgba(74, 55, 40, 0.4);
+}
+
+.rustic-frame::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  border-radius: 0.75rem;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Vintage Quote Marks - Aspas Decorativas
+   ───────────────────────────────────────────────────────────────────────────── */
+.vintage-quote {
+  position: relative;
+}
+
+.vintage-quote::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: -1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #e9c46a;
+  opacity: 0.2;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Golden Underline - Sublinhado Dourado Animado
+   ───────────────────────────────────────────────────────────────────────────── */
+.golden-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.golden-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #e9c46a, #d4a373, #e9c46a);
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Leather Texture Overlay
+   ───────────────────────────────────────────────────────────────────────────── */
+.leather-texture {
+  position: relative;
+}
+
+.leather-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Paper Texture Background
+   ───────────────────────────────────────────────────────────────────────────── */
+.paper-texture {
+  background-color: #faf9f6;
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(212, 163, 115, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(233, 196, 106, 0.05) 0%, transparent 50%);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Wax Seal Badge - Selo de Cera
+   ───────────────────────────────────────────────────────────────────────────── */
+.wax-seal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: radial-gradient(circle at 30% 30%, #f0d080, #e9c46a 50%, #c9a050);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(74, 55, 40, 0.4);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.625rem;
+  font-weight: 900;
+  color: #4a3728;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transform: rotate(-8deg);
+}
+
+.wax-seal::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 2px solid rgba(74, 55, 40, 0.2);
+  border-radius: 50%;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Fence/Gate Decorative Element
+   ───────────────────────────────────────────────────────────────────────────── */
+.fence-decoration {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  padding: 1rem 0;
+}
+
+.fence-decoration .post {
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(to bottom, #e9c46a, #d4a373);
+  border-radius: 2px 2px 0 0;
+}
+
+.fence-decoration .post:nth-child(odd) {
+  height: 32px;
+}
+
+.fence-decoration .rail {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #e9c46a;
+  bottom: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes cartPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.cart-badge-pulse {
+  animation: cartPulse 0.6s ease-in-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BUTTON STYLES - Ranch/Fazenda Premium
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.btn-ranch-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  color: #4a3728;
+  background: linear-gradient(135deg, #e9c46a 0%, #d4a373 100%);
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 4px 15px rgba(233, 196, 106, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-ranch-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ranch-primary:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 25px rgba(233, 196, 106, 0.5),
+    0 0 40px rgba(233, 196, 106, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-ranch-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-ranch-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  color: white;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-ranch-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #e9c46a;
+  color: #e9c46a;
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(233, 196, 106, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY UTILITIES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.font-ranch-display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.font-ranch-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+}
+
+.font-ranch-accent {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SECTION BACKGROUNDS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.bg-ranch-pattern {
+  background-color: #faf9f6;
+  background-image:
+    radial-gradient(#4a3728 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+.bg-ranch-gradient {
+  background: linear-gradient(
+    180deg,
+    #faf9f6 0%,
+    rgba(212, 163, 115, 0.05) 50%,
+    #faf9f6 100%
+  );
+}

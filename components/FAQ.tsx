@@ -37,16 +37,23 @@ export const FAQ: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-24 bg-white">
-      <div className="container mx-auto px-6 lg:px-12 max-w-4xl">
+    <section id="faq" className="py-24 bg-white relative overflow-hidden">
+      {/* Elementos decorativos de fundo */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-agro-gold/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-agro-soil/5 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+
+      <div className="container mx-auto px-6 lg:px-12 max-w-4xl relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-agro-gold/10 text-agro-primary rounded-full mb-4">
-            <HelpCircle size={24} />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-agro-bg border-2 border-agro-gold text-agro-primary rounded-full mb-6 shadow-sm">
+            <HelpCircle size={32} />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-ranch-display text-gray-900 mb-4">
             Dúvidas Frequentes
           </h2>
-          <p className="text-gray-500">
+          <div className="ornament-divider max-w-xs mx-auto mb-6">
+            <div className="ornament-dot"></div>
+          </div>
+          <p className="text-gray-500 font-medium">
             Tudo o que você precisa saber sobre nossos produtos e entregas.
           </p>
         </div>
@@ -55,28 +62,34 @@ export const FAQ: React.FC = () => {
           {FAQS.map((faq, index) => (
             <div 
               key={index} 
-              className={`border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 ${
-                openIndex === index ? 'bg-agro-bg shadow-md border-agro-gold/30' : 'bg-white hover:bg-gray-50'
+              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+                openIndex === index 
+                  ? 'bg-agro-bg shadow-lg border-agro-gold/40' 
+                  : 'bg-white border-gray-100 hover:border-agro-gold/20 hover:shadow-md'
               }`}
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                className="w-full flex items-center justify-between p-6 text-left focus:outline-none group"
               >
-                <span className={`font-bold text-lg ${openIndex === index ? 'text-agro-primary' : 'text-gray-700'}`}>
+                <span className={`font-ranch-display text-xl transition-colors duration-300 ${openIndex === index ? 'text-agro-primary' : 'text-gray-800'}`}>
                   {faq.question}
                 </span>
-                <div className={`p-2 rounded-full transition-colors ${openIndex === index ? 'bg-agro-primary text-white' : 'bg-gray-100 text-gray-400'}`}>
-                  {openIndex === index ? <Minus size={16} /> : <Plus size={16} />}
+                <div className={`p-2 rounded-full transition-all duration-300 ${
+                  openIndex === index 
+                    ? 'bg-agro-primary text-white scale-110 shadow-md' 
+                    : 'bg-agro-bg text-agro-primary group-hover:bg-agro-gold/20'
+                }`}>
+                  {openIndex === index ? <Minus size={18} /> : <Plus size={18} />}
                 </div>
               </button>
               
               <div 
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                className={`transition-all duration-500 ease-in-out overflow-hidden ${
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-200/50 mt-2">
+                <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-agro-gold/10 mt-2 text-lg">
                   {faq.answer}
                 </div>
               </div>

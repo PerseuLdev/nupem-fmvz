@@ -100,7 +100,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0, on
     <div 
       ref={cardRef}
       onClick={() => onClick(product)}
-      className={`group relative w-full h-[480px] rounded-[2rem] overflow-hidden bg-white shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-12px_rgba(74,55,40,0.25)] transition-all duration-700 ease-out cursor-pointer transform hover:-translate-y-2 backface-hidden
+      className={`group relative w-full h-[480px] rounded-[2rem] overflow-hidden bg-white shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-12px_rgba(74,55,40,0.25)] transition-all duration-700 ease-out cursor-pointer transform hover:-translate-y-2 hover:border-agro-gold/50 border-2 border-transparent backface-hidden
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}
       `}
       style={{ 
@@ -111,9 +111,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0, on
     >
       
       {/* BACKGROUND LAYER */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <div className="absolute inset-0 w-full h-full overflow-hidden leather-texture">
         {isSticker ? (
-          // Layout Especial para Adesivos: Mudado de 'items-center' para 'items-start pt-20'
+          // Layout Especial para Adesivos
           <div className="w-full h-full bg-[#f4f1ea] flex items-start justify-center pt-20 relative">
             {/* Pattern Dots */}
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#4a3728 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }}></div>
@@ -149,17 +149,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0, on
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent opacity-40 h-32" />
 
       {/* TOP TAGS & ACTIONS */}
-      {/* Aumentado de top-6 left-6 para top-8 left-8 para alinhar com o padding inferior de p-8 */}
       <div className="absolute top-8 left-8 z-20 flex flex-col gap-2 items-start">
         {product.isNew && (
-          <span className="bg-agro-gold text-agro-primary text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg backdrop-blur-md border border-white/20">
+          <div className="wax-seal">
             Novo
-          </span>
+          </div>
         )}
       </div>
 
       {/* Share Button (Top Right) */}
-      {/* Aumentado de top-6 right-6 para top-8 right-8 */}
       <button 
         onClick={handleShare}
         disabled={isSharing}
@@ -180,18 +178,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0, on
       </button>
 
       {/* CONTENT OVERLAY */}
-      {/* MUDANÇA AQUI: Alterado de p-8 para px-8 pt-8 pb-12 para dar mais espaço no fundo */}
       <div className="absolute bottom-0 left-0 w-full px-8 pt-8 pb-12 z-20 flex flex-col justify-end h-full">
         <div className="translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-out">
           
           <div className="flex items-center gap-2 mb-2 opacity-80">
             <div className="w-8 h-[1px] bg-agro-gold"></div>
-            <span className="text-agro-gold text-xs font-bold uppercase tracking-widest">
+            <span className="text-agro-gold text-xs font-ranch-accent">
               {product.category}
             </span>
           </div>
           
-          <h3 className="text-2xl font-bold text-white mb-3 leading-tight drop-shadow-sm pr-4">
+          <h3 className="text-2xl font-ranch-heading text-white mb-3 leading-tight drop-shadow-sm pr-4">
             {product.name}
           </h3>
 
