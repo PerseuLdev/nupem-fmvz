@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { X, ShoppingBag, Check, Plus, Minus, Sparkles, Tag } from 'lucide-react';
+import { X, ShoppingBag, Check, Plus, Minus, Sparkles, Tag, Zap, ArrowRight } from 'lucide-react';
 import { Product, Category } from '../types';
 
 interface ProductModalProps {
@@ -7,10 +7,12 @@ interface ProductModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAddToCart: (product: Product) => void;
+  onOpenCart?: () => void;
 }
 
-export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose, onAddToCart }) => {
+export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose, onAddToCart, onOpenCart }) => {
   const [isAdded, setIsAdded] = useState(false);
+  const [buyNowClicked, setBuyNowClicked] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -84,7 +86,23 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onC
       onAddToCart(product);
     }
     setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 2000);
+    setTimeout(() => setIsAdded(false), 2500);
+  };
+
+  const handleBuyNow = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    for (let i = 0; i < quantity; i++) {
+      onAddToCart(product);
+    }
+    setBuyNowClicked(true);
+
+    // Fecha modal e abre carrinho após breve delay para feedback visual
+    setTimeout(() => {
+      handleClose();
+      setTimeout(() => {
+        onOpenCart?.();
+      }, 300);
+    }, 600);
   };
 
   const incrementQty = () => setQuantity(prev => Math.min(prev + 1, 10));
@@ -269,36 +287,63 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onC
               </div>
             </div>
 
-            {/* Total & Add to Cart */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              {/* Total */}
-              <div className="flex-1 bg-[#f5f0eb] rounded-2xl p-4 flex items-center justify-between sm:justify-center sm:flex-col">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#8c6b5d]">Total</span>
-                <span className="text-2xl font-black text-[#4a3728]">
-                  {formatPrice(product.price * quantity)}
-                </span>
-              </div>
+            {/* Total */}
+            <div className="bg-[#f5f0eb] rounded-2xl p-4 mb-4 flex items-center justify-between">
+              <span className="text-sm font-bold uppercase tracking-wider text-[#8c6b5d]">Total</span>
+              <span className="text-3xl font-black text-[#4a3728]">
+                {formatPrice(product.price * quantity)}
+              </span>
+            </div>
 
-              {/* Add to Cart Button */}
+            {/* CTA Buttons - Inspired by Amazon/Apple conversion patterns */}
+            <div className="flex flex-col gap-3">
+              {/* Primary CTA: Buy Now */}
               <button
-                onClick={handleAddToCart}
-                className={`flex-1 sm:flex-[2] py-5 px-8 rounded-2xl font-bold text-base flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-[0.98] shadow-lg hover:shadow-xl ${
-                  isAdded
+                onClick={handleBuyNow}
+                disabled={buyNowClicked}
+                className={`w-full py-4 px-8 rounded-2xl font-bold text-base flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-[0.98] shadow-lg hover:shadow-xl group ${
+                  buyNowClicked
                     ? 'bg-green-500 text-white'
-                    : 'bg-[#4a3728] text-white hover:bg-[#3a2a1c]'
+                    : 'bg-gradient-to-r from-[#e9c46a] to-[#d4a373] text-[#4a3728] hover:from-[#f0d080] hover:to-[#e0b080]'
                 }`}
                 style={{
-                  boxShadow: isAdded ? '0 10px 40px -10px rgba(34, 197, 94, 0.5)' : '0 10px 40px -10px rgba(74, 55, 40, 0.4)',
+                  boxShadow: buyNowClicked
+                    ? '0 10px 40px -10px rgba(34, 197, 94, 0.5)'
+                    : '0 10px 40px -10px rgba(233, 196, 106, 0.5)',
                 }}
               >
-                {isAdded ? (
+                {buyNowClicked ? (
                   <>
-                    <Check size={22} strokeWidth={3} />
-                    <span>Adicionado ao Carrinho!</span>
+                    <Check size={22} strokeWidth={3} className="animate-bounce" />
+                    <span>Indo para o Carrinho...</span>
                   </>
                 ) : (
                   <>
-                    <ShoppingBag size={22} />
+                    <Zap size={20} fill="currentColor" />
+                    <span>Comprar Agora</span>
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
+              </button>
+
+              {/* Secondary CTA: Add to Cart */}
+              <button
+                onClick={handleAddToCart}
+                disabled={isAdded || buyNowClicked}
+                className={`w-full py-4 px-8 rounded-2xl font-bold text-base flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-[0.98] border-2 ${
+                  isAdded
+                    ? 'bg-green-500/10 border-green-500 text-green-600'
+                    : 'bg-transparent border-[#4a3728]/20 text-[#4a3728] hover:border-[#4a3728] hover:bg-[#4a3728]/5'
+                } disabled:opacity-50`}
+              >
+                {isAdded ? (
+                  <>
+                    <Check size={20} strokeWidth={3} />
+                    <span>Adicionado! Continue comprando</span>
+                  </>
+                ) : (
+                  <>
+                    <ShoppingBag size={20} />
                     <span>Adicionar ao Carrinho</span>
                   </>
                 )}

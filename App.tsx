@@ -243,11 +243,12 @@ const App: React.FC = () => {
 
       {/* Product Quick View Modal */}
       {selectedProduct && (
-        <ProductModal 
+        <ProductModal
           product={selectedProduct}
           isOpen={!!selectedProduct}
           onClose={() => setSelectedProduct(null)}
           onAddToCart={addToCart}
+          onOpenCart={() => setIsCartOpen(true)}
         />
       )}
 
